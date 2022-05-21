@@ -1,12 +1,18 @@
+import java.io.IOException;
+
 public class App {
    public static Object Lock1 = new Object();
    public static Object Lock2 = new Object();
 
-   public static void main(String args[]) {
-      ThreadDemo1 T1 = new ThreadDemo1();
-      ThreadDemo2 T2 = new ThreadDemo2();
-      T1.start();
-      T2.start();
+   public static void main(String args[]) throws IOException {
+      String[] arg = {"src/another.txt", "src/another2.txt"};
+      UniqueWordsThread a = new UniqueWordsThread(arg);
+      a.countWords();
+      System.out.println(a);
+      //ThreadDemo1 T1 = new ThreadDemo1();
+      //ThreadDemo2 T2 = new ThreadDemo2();
+      //T1.start();
+      //T2.start();
    }
 
    private static class ThreadDemo1 extends Thread {
